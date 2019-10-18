@@ -7,7 +7,9 @@
       <input type="text" id="address" v-model="address" required/>
       <label for="postcode">Postcode:</label>
       <input type="text" id="postcode" v-model="postcode" required/>
-      <select  name="cuisine" v-model="cuisine">
+
+        <label for="cuisine">Cuisine:</label>
+      <select  name="cuisine" v-model="cuisine" >
         <option value="Italian">Italian</option>
         <option value="Mexican">Mexican</option>
         <option value="Healthy food">Healthy food</option>
