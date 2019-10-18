@@ -1,17 +1,17 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+   <section>
+    <restaurants-Grid />
+  </section>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import RestaurantsService from './services/RestaurantsService'
+import RestaurantsGrid from './components/RestaurantsGrid.vue'
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  components:{
+    'restaurants-Grid': RestaurantsGrid
   }
 }
 </script>
