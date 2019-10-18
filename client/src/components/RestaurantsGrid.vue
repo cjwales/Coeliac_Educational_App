@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import {eventBus} from '../main';
 import RestaurantView from '@/components/RestaurantView'
 import RestaurantsService from '@/services/RestaurantsService'
 export default {
@@ -25,6 +26,11 @@ export default {
     fetchdata(){
     RestaurantsService.getRestaurants()
     .then(restaurants => this.restaurants = restaurants)
+
+
+    eventBus.$on('restaurant-added', (restaurant) => {
+    this.restaurants.push(restaurant)
+  })
   },
 },
   components: {

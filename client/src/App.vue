@@ -1,17 +1,24 @@
 <template>
-   <section>
-    <restaurants-Grid />
-  </section>
+  <div class="">
+    <section>
+      <restaurant-form/>
+      <restaurants-Grid />
+    </section>
+
+
+  </div>
+
 </template>
 
 <script>
-import RestaurantsService from './services/RestaurantsService'
-import RestaurantsGrid from './components/RestaurantsGrid.vue'
 
+import RestaurantsGrid from './components/RestaurantsGrid.vue'
+import RestaurantForm from './components/RestaurantForm.vue'
 export default {
   name: 'app',
   components:{
-    'restaurants-Grid': RestaurantsGrid
+    'restaurants-Grid': RestaurantsGrid,
+    'restaurant-form': RestaurantForm
   }
 }
 </script>
