@@ -66,12 +66,4 @@ db.restaurants.insertMany([
     location: " 447 Great Western Rd, Glasgow G12 8HH",
     phone: 01413340686
   },
-  {
-    name: "La Lanterna (West End)",
-    range: "££",
-    cuisine: "Italian",
-    review: [],
-    location: " 447 Great Western Rd, Glasgow G12 8HH",
-    phone: 01413340686
-  },
 ]);
