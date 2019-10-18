@@ -1,8 +1,8 @@
 <template lang="html">
-<div class="">
-  <restaurant-view  v-for="(restaurant , index) in restaurants" :key= "index" :restaurant="restaurant" >
-  </restaurant-view>
-</div>
+  <div class="">
+    <restaurant-view  v-for="(restaurant , index) in restaurants" :key= "index" :restaurant="restaurant" >
+    </restaurant-view>
+  </div>
 
 
 
@@ -19,20 +19,25 @@ export default {
     }
   },
   mounted(){
-  this.fetchdata();
+    this.fetchdata();
   },
 
   methods: {
     fetchdata(){
-    RestaurantsService.getRestaurants()
-    .then(restaurants => this.restaurants = restaurants)
+      RestaurantsService.getRestaurants()
+      .then(restaurants => this.restaurants = restaurants)
 
 
-    eventBus.$on('restaurant-added', (restaurant) => {
-    this.restaurants.push(restaurant)
-  })
+      eventBus.$on('restaurant-added', (restaurant) => {
+        this.restaurants.push(restaurant)
+      })
+      eventBus.$on('restaurant-deleted', (id) => {
+        let index = this.restaurants.findIndex(restaurant => restaurant._id === id)
+        this.restaurants.splice(index, 1)
+      })
+
+    },
   },
-},
   components: {
     'restaurant-view': RestaurantView
   }

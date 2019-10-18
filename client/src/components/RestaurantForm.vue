@@ -8,7 +8,7 @@
       <label for="postcode">Postcode:</label>
       <input type="text" id="postcode" v-model="postcode" required/>
 
-        <label for="cuisine">Cuisine:</label>
+      <label for="cuisine">Cuisine:</label>
       <select  name="cuisine" v-model="cuisine" >
         <option value="Italian">Italian</option>
         <option value="Mexican">Mexican</option>
@@ -42,7 +42,6 @@ export default {
 
     }
   },
-  // props:['name'],
   methods:{
     handleSubmit(e){
       e.preventDefault()
