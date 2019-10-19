@@ -52,6 +52,7 @@ export default {
         cuisine:this.cuisine
       }
       RestaurantsService.postRestaurant(payload).then(restaurant =>{eventBus.$emit('restaurant-added',restaurant)})
+    
       event.target.reset();
 
     }
