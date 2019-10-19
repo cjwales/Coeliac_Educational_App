@@ -6,7 +6,7 @@ db.restaurants.insertMany([
     name: "Dakin",
     range: "££",
     cuisine: "Indian",
-    review: [],
+    reviews: ["food was so delicious"],
     location: "89 Candleriggs, Merchant City, Glasgow ",
     postcode:"G1 1NP",
     phone: 01415532585
@@ -15,7 +15,7 @@ db.restaurants.insertMany([
     name: "Topolabamba",
     range: "££",
     cuisine: "Mexican",
-    review: [],
+    reviews: [],
     location: "89 St Vincent St, Glasgow ",
     postcode:"G2 5TF",
     phone: 01412489359
@@ -24,7 +24,7 @@ db.restaurants.insertMany([
     name: "Kcal Kitchen",
     range: "££",
     cuisine: "Health food",
-    review: [],
+    reviews: [],
     location: "130 W Regent St, Glasgow ",
     postcode:"G2 5TF",
     phone: 01412120861
@@ -33,7 +33,7 @@ db.restaurants.insertMany([
     name: "Pizza Punks",
     range: "££",
     cuisine: "Pizza",
-    review: [],
+    reviews: [],
     location: "90 St Vincent St, Glasgow ",
     postcode:"G2 5UB",
     phone: 01412378020
@@ -42,7 +42,7 @@ db.restaurants.insertMany([
     name: "Lychee Oriental",
     range: "££",
     cuisine: "Chinese",
-    review: [],
+    reviews: [],
     location: "59 Mitchell St, Glasgow ",
     postcode:"G1 3LN",
     phone: 01412482240
@@ -51,7 +51,7 @@ db.restaurants.insertMany([
     name: "Sarti (Wellington Street)",
     range: "££",
     cuisine: "Italian",
-    review: [],
+    reviews: [],
     location: "133 Wellington St, Glasgow ",
     postcode:"G2 2XD",
     phone: 01412482228
@@ -60,7 +60,7 @@ db.restaurants.insertMany([
     name: "The Red Onion",
     range: "££",
     cuisine: "European",
-    review: [],
+    reviews: [],
     location: "257 W Campbell St, Glasgow ",
     postcode:"G2 4TT",
     phone: 01412216000
@@ -69,7 +69,7 @@ db.restaurants.insertMany([
     name: "La Lanterna (West End)",
     range: "££",
     cuisine: "Italian",
-    review: [],
+    reviews: [],
     location: " 447 Great Western Rd, Glasgow ",
     postcode:"G12 8HH",
 
