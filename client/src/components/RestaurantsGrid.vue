@@ -2,6 +2,7 @@
   <div class="">
     <restaurant-view  v-for="(restaurant , index) in restaurants" :key= "index" :restaurant="restaurant" >
     </restaurant-view>
+      <restaurants-map/>
   </div>
 
 
@@ -10,6 +11,8 @@
 
 <script>
 import {eventBus} from '../main';
+
+import ReataurantsMap from '@/components/ReataurantsMap.vue'
 import RestaurantView from '@/components/RestaurantView'
 import RestaurantsService from '@/services/RestaurantsService'
 export default {
@@ -39,7 +42,8 @@ export default {
     },
   },
   components: {
-    'restaurant-view': RestaurantView
+    'restaurant-view': RestaurantView,
+    'restaurants-map':ReataurantsMap,
   }
 
 }

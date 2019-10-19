@@ -11,14 +11,14 @@
 </template>
 
 <script>
-
 import RestaurantsGrid from './components/RestaurantsGrid.vue'
 import RestaurantForm from './components/RestaurantForm.vue'
 export default {
   name: 'app',
   components:{
     'restaurants-Grid': RestaurantsGrid,
-    'restaurant-form': RestaurantForm
+    'restaurant-form': RestaurantForm,
+
   }
 }
 </script>
