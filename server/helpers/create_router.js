@@ -77,7 +77,8 @@ const createRouter = function(collection) {
     )
     .then((result) => {
       res.json(result.value)
-    })
+     console.log("server",result);}
+  )
     .catch((err) => {
       console.error(err);
       res.status(500),
