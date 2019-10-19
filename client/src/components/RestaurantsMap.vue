@@ -11,6 +11,7 @@
 import {LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 export default {
   name: "restaurants-map",
+  // props: ['restaurantmap'],
 
   data() {
     return {
@@ -31,6 +32,9 @@ export default {
 
 <style lang="css" scoped>
 .map {
-  height: 95vh
+  height: 50vh;
+  width:50vh
+
+
 }
 </style>

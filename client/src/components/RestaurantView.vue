@@ -1,6 +1,7 @@
 <template lang="html">
 
   <div class="restaurant-view">
+    <h1>ffff</h1>
     <h3>{{ restaurant.name }}</h3>
     <p>Restaurant range :{{restaurant.range}}</p>
     <p>Cuisine :{{restaurant.cuisine}}</p>
@@ -27,11 +28,7 @@ import RestaurantReview from '@/components/RestaurantReview'
 
 export default {
   name: "restaurant-view",
-  // data(){
-  //   return {
-  //     reviews: []
-  //   }
-  // },
+
   props:['restaurant'],
   methods: {
     deleteRestaurant(){

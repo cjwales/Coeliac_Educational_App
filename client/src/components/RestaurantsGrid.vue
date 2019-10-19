@@ -1,8 +1,12 @@
 <template lang="html">
   <div class="">
-    <restaurant-view  v-for="(restaurant , index) in restaurants" :key= "index" :restaurant="restaurant" >
+
+    <restaurant-name  v-for="(restaurant , index) in restaurants" :key= "index" :restaurant="restaurant" >
+    </restaurant-name>
+    <restaurants-map />
+    <restaurant-view  :restaurant="selectedRestaurant" >
     </restaurant-view>
-      <restaurants-map/>
+
   </div>
 
 
@@ -12,13 +16,16 @@
 <script>
 import {eventBus} from '../main';
 
-import ReataurantsMap from '@/components/ReataurantsMap.vue'
+import RestaurantsMap from '@/components/RestaurantsMap.vue'
 import RestaurantView from '@/components/RestaurantView'
+import RestaurantName from '@/components/RestaurantName.vue'
 import RestaurantsService from '@/services/RestaurantsService'
+
 export default {
   data(){
     return {
-      restaurants: []
+      restaurants: [],
+      selectedRestaurant: null
     }
   },
   mounted(){
@@ -38,12 +45,17 @@ export default {
         let index = this.restaurants.findIndex(restaurant => restaurant._id === id)
         this.restaurants.splice(index, 1)
       })
+      eventBus.$on('restaurant-selected', (restaurant) => {
+     this.selectedRestaurant = restaurant
+
+   })
 
     },
   },
   components: {
-    'restaurant-view': RestaurantView,
-    'restaurants-map':ReataurantsMap,
+     'restaurant-view': RestaurantView,
+    'restaurants-map':RestaurantsMap,
+    'restaurant-name': RestaurantName,
   }
 
 }
