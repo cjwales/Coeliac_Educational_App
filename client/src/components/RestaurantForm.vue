@@ -1,5 +1,6 @@
 <template lang="html">
   <div class=""id="restaurant-form">
+    <h1>Suggest Restaurant</h1>
     <form id="restaurant-form" v-on:submit="handleSubmit" method="post" >
       <label for="name">Restaurant name:</label>
       <input type="text" id="name" v-model="name" required/>
@@ -59,6 +60,7 @@ export default {
          cuisine:this.cuisine,
          longitude:this.geolocation.longitude,
          latitude:this.geolocation.latitude,
+         reviews:[]
         }
         console.log("payload",payload);
         RestaurantsService.postRestaurant(payload).then(restaurant =>{eventBus.$emit('restaurant-added',restaurant)})
