@@ -33,29 +33,46 @@ export default {
 
   name:"restaurant-form",
   data(){
-    //console.log("shjdgsg");
     return {
       name:'',
       address:'',
       postcode:'',
-      cuisine:''
-
+      cuisine:'',
+      longitude:'',
+      latitude:'',
+      geolocation:{}
     }
   },
   methods:{
     handleSubmit(e){
       e.preventDefault()
-      const payload = {
-        name: this.name,
-        address:this.address,
-        postcode: this.postcode,
-        cuisine:this.cuisine
+      let postcode= e.target.postcode.value;
+      console.log("postcode",postcode);
+      fetch("https://api.postcodes.io/postcodes/"+postcode)
+      .then(response => response.json())
+      .then(data => this.geolocation=data.result)
+      .then(res => {
+        const payload = {
+         name: this.name,
+         address:this.address,
+         postcode: this.postcode,
+         cuisine:this.cuisine,
+         longitude:this.geolocation.longitude,
+         latitude:this.geolocation.latitude,
+        }
+        console.log("payload",payload);
+        RestaurantsService.postRestaurant(payload).then(restaurant =>{eventBus.$emit('restaurant-added',restaurant)})
+
+        // event.target.reset();
+
+
       }
-      RestaurantsService.postRestaurant(payload).then(restaurant =>{eventBus.$emit('restaurant-added',restaurant)})
-    
-      event.target.reset();
+
+
+      )
 
     }
+
   }
 }
 </script>

@@ -5,6 +5,7 @@
     <p>Restaurant range :{{restaurant.range}}</p>
     <p>Cuisine :{{restaurant.cuisine}}</p>
     <p>Location :{{restaurant.location}}</p>
+    <p>Postcode :{{restaurant.postcode}}</p>
     <label for="review">Add review</label>
     <input type="text" name="review" v-on:keyup.enter="submit" >
     <br>
