@@ -3,7 +3,8 @@
 
     <restaurant-name  v-for="(restaurant , index) in restaurants" :key= "index" :restaurant="restaurant" >
     </restaurant-name>
-    <restaurants-map />
+    <restaurants-map  :restaurant="selectedRestaurant" :markers=markers>
+    </restaurants-map>
     <restaurant-view  :restaurant="selectedRestaurant" >
     </restaurant-view>
 
@@ -25,7 +26,8 @@ export default {
   data(){
     return {
       restaurants: [],
-      selectedRestaurant: null
+      selectedRestaurant: null,
+      markers:[]
     }
   },
   mounted(){
@@ -35,7 +37,24 @@ export default {
   methods: {
     fetchdata(){
       RestaurantsService.getRestaurants()
-      .then(restaurants => this.restaurants = restaurants)
+    .then(data =>
+    {
+
+      let markers=[]
+      this.restaurants=data
+       for (var i = 0; i < this.restaurants.length; i++) {
+        let marker = {position:'', tooltip:''}
+        let ps = {lat:'',lng:''}
+        ps.lat = this.restaurants[i].latitude
+        ps.lng = this.restaurants[i].longitude
+        marker.position = ps
+        marker.tooltip = this.restaurants[i].name
+        markers.push(marker)
+      }
+      this.markers=markers
+
+   }
+  )
 
 
       eventBus.$on('restaurant-added', (restaurant) => {
