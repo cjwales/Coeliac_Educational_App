@@ -39,7 +39,6 @@ export default {
       .then(() => eventBus.$emit('restaurant-deleted', this.restaurant._id))
     },
     submit(){
-      console.log(event.target.value);
       this.restaurant.reviews.push(event.target.value);
       let reviewsLocal = {
         "reviews":[]

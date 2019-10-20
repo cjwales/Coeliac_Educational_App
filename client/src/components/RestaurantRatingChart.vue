@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import {eventBus} from '../main';
 import highcharts from 'highcharts-vue'
 import Highcharts3d from "highcharts/highcharts-3d"
 import HighchartsVue from "highcharts-vue"
@@ -51,12 +52,16 @@ export default {
     }
   },
   mounted(){
-    this.fetchdata()
+
+    eventBus.$on('restaurant-selected', (restaurant) => {
+    this.fetchdata(restaurant)
+    })
+
 
   },
   methods:{
-    fetchdata(){
-      let  ratings= this.restaurant.ratings
+    fetchdata(restaurant){
+      let  ratings= restaurant.ratings
       var counts = {
         1 : 0,
         2 : 0,
