@@ -2,7 +2,7 @@
   <div class="">
     <section>
       <restaurant-form/>
-      <restaurants-Grid />
+      <restaurants-List />
     </section>
 
 
@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import RestaurantsGrid from './components/RestaurantsGrid.vue'
+import RestaurantsList from './components/RestaurantsList.vue'
 import RestaurantForm from './components/RestaurantForm.vue'
 export default {
   name: 'app',
   components:{
-    'restaurants-Grid': RestaurantsGrid,
+    'restaurants-List': RestaurantsList,
     'restaurant-form': RestaurantForm,
 
   }
