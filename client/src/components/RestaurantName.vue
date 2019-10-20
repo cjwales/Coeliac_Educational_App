@@ -1,7 +1,6 @@
 <template lang="html">
   <div class="">
     <li v-on:click="handleNameClick">{{restaurant.name}}</li>
-    <!-- <restaurant-view/> -->
   </div>
 
 
@@ -19,9 +18,6 @@ methods:{
     eventBus.$emit('restaurant-selected', this.restaurant)
   }
 },
-// components:{
-//   'restaurant-view': RestaurantView
-// }
 }
 </script>
 

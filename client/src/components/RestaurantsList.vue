@@ -3,7 +3,7 @@
 
     <restaurant-name  v-for="(restaurant , index) in restaurants" :key= "index" :restaurant="restaurant" >
     </restaurant-name>
-    <restaurants-map  :restaurant="selectedRestaurant" :markers=markers>
+    <restaurants-map  :restaurants="restaurants" :markers=markers>
     </restaurants-map>
     <restaurant-view  :restaurant="selectedRestaurant" >
     </restaurant-view>
@@ -32,29 +32,35 @@ export default {
   },
   mounted(){
     this.fetchdata();
+    eventBus.$on('restaurant-selected', (restaurant) => {
+      this.selectedRestaurant = restaurant
+
+    })
   },
 
   methods: {
     fetchdata(){
       RestaurantsService.getRestaurants()
-    .then(data =>
-    {
+      .then(data =>
+        {
 
-      let markers=[]
-      this.restaurants=data
-       for (var i = 0; i < this.restaurants.length; i++) {
-        let marker = {position:'', tooltip:''}
-        let ps = {lat:'',lng:''}
-        ps.lat = this.restaurants[i].latitude
-        ps.lng = this.restaurants[i].longitude
-        marker.position = ps
-        marker.tooltip = this.restaurants[i].name
-        markers.push(marker)
-      }
-      this.markers=markers
+          let markers=[]
+          this.restaurants=data
+          for (var i = 0; i < this.restaurants.length; i++) {
+            let marker = {position:'', tooltip:''}
+            let ps = {lat:'',lng:''}
+            ps.lat = this.restaurants[i].latitude
+            ps.lng = this.restaurants[i].longitude
+            marker.position = ps
 
-   }
-  )
+            marker.tooltip = this.restaurants[i].name
+            markers.push(marker)
+
+          }
+          this.markers=markers
+
+        }
+      )
 
 
       eventBus.$on('restaurant-added', (restaurant) => {
@@ -64,15 +70,12 @@ export default {
         let index = this.restaurants.findIndex(restaurant => restaurant._id === id)
         this.restaurants.splice(index, 1)
       })
-      eventBus.$on('restaurant-selected', (restaurant) => {
-     this.selectedRestaurant = restaurant
 
-   })
 
     },
   },
   components: {
-     'restaurant-view': RestaurantView,
+    'restaurant-view': RestaurantView,
     'restaurants-map':RestaurantsMap,
     'restaurant-name': RestaurantName,
   }

@@ -1,21 +1,26 @@
 <template lang="html">
-  <div class="row map">
-    <l-map :zoom="zoom" :center="center">
-      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-      <l-marker v-for = "marker in markers":lat-lng="marker.position"
-      v-on:l-add="realMarkerAdd">
-      <l-popup :content="marker.tooltip"/>
-    </l-marker>
+  <div class="">
+    <div class="row map">
+      <l-map :zoom="zoom" :center="center">
+        <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+        <l-marker v-for = "marker in markers":lat-lng="marker.position"
+        @click="hello(marker)">
+        <l-popup :content="marker.tooltip" />
+      </l-marker>
     </l-map>
   </div>
+
+</div>
+
 
 </template>
 
 <script>
+import {eventBus} from '../main';
 import {LMap, LTileLayer, LMarker ,LPopup } from 'vue2-leaflet';
 export default {
   name: "restaurants-map",
-  props: ['restaurant','markers'],
+  props: ['restaurants','markers'],
 
   data() {
     return {
@@ -32,21 +37,21 @@ export default {
     LPopup
   },
   methods:{
-    realMarkerAdd: function(event){
-      Vue.nextTick(() => {
-        event.target.openPopup();
-      })
+    hello: function (marker){
+      let popUpSelectedRestaurent = this.restaurants.find(restaurant =>
+        {
+          return restaurant.name == marker.tooltip
+        }
+      )
+      eventBus.$emit('restaurant-selected',popUpSelectedRestaurent)
     }
-
   }
 }
 </script>
 
 <style lang="css" scoped>
 .map {
-  height: 50vh;
-  width:50vh
-
-
+  height:50vh;
+  width:50vh;
 }
 </style>
