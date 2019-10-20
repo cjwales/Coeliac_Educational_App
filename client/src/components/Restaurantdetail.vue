@@ -1,12 +1,12 @@
 <template lang="html">
 
-  <div class="restaurant-view">
-    <h1>ffff</h1>
+  <div class="restaurant-detail">
     <h3>{{ restaurant.name }}</h3>
     <p>Restaurant range :{{restaurant.range}}</p>
     <p>Cuisine :{{restaurant.cuisine}}</p>
     <p>Location :{{restaurant.location}}</p>
     <p>Postcode :{{restaurant.postcode}}</p>
+    <p>{{restaurant.ratings}}</p>
     <label for="review">Add review</label>
     <input type="text" name="review" v-on:keyup.enter="submit" >
     <br>
@@ -14,6 +14,7 @@
 
     <restaurant-review  v-for="review in restaurant.reviews"  :review="review" >
     </restaurant-review>
+    <restaurant-highcharts :restaurant="restaurant"></restaurant-highcharts>
 
   <hr>
 
@@ -23,11 +24,13 @@
 
 <script>
 import { eventBus } from '@/main.js'
+import RestaurantRatingChart from '@/components/RestaurantRatingChart.vue'
 import RestaurantsService from '@/services/RestaurantsService'
 import RestaurantReview from '@/components/RestaurantReview'
 
 export default {
-  name: "restaurant-view",
+  name: "restaurant-detail",
+
 
   props:['restaurant'],
   methods: {
@@ -43,14 +46,33 @@ export default {
       }
       reviewsLocal.reviews = this.restaurant.reviews
       RestaurantsService.UpdateRestaurant(this.restaurant._id , reviewsLocal)
-    }
-
-  },
+    },
+   },
   components:{
-    'restaurant-review': RestaurantReview
+    'restaurant-review': RestaurantReview,
+    'restaurant-highcharts': RestaurantRatingChart
+
+
   }
 }
 </script>
 
 <style lang="css" scoped>
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+.custom-text {
+  font-weight: bold;
+  font-size: 1.9em;
+  border: 1px solid #cfcfcf;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  color: #999;
+  background: #fff;
+}
+
+
 </style>

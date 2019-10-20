@@ -60,7 +60,8 @@ export default {
           cuisine:this.cuisine,
           longitude:this.geolocation.longitude,
           latitude:this.geolocation.latitude,
-          reviews:[]
+          reviews:[],
+          ratings:[]
         }
         console.log("payload",payload);
         RestaurantsService.postRestaurant(payload).then(restaurant =>

@@ -13,6 +13,8 @@
 <script>
 import RestaurantsList from './components/RestaurantsList.vue'
 import RestaurantForm from './components/RestaurantForm.vue'
+
+
 export default {
   name: 'app',
   components:{

@@ -5,8 +5,9 @@
     </restaurant-name>
     <restaurants-map  :restaurants="restaurants" :markers=markers>
     </restaurants-map>
-    <restaurant-view  :restaurant="selectedRestaurant" >
-    </restaurant-view>
+    <restaurant-detail  :restaurant="selectedRestaurant" >
+    </restaurant-detail>
+
 
   </div>
 
@@ -17,8 +18,9 @@
 <script>
 import {eventBus} from '../main';
 
+import RestaurantRatingChart from '@/components/RestaurantRatingChart.vue'
 import RestaurantsMap from '@/components/RestaurantsMap.vue'
-import RestaurantView from '@/components/RestaurantView'
+import Restaurantdetail from '@/components/Restaurantdetail'
 import RestaurantName from '@/components/RestaurantName.vue'
 import RestaurantsService from '@/services/RestaurantsService'
 
@@ -73,9 +75,10 @@ export default {
     }
   },
   components: {
-    'restaurant-view': RestaurantView,
+    'restaurant-detail': Restaurantdetail,
     'restaurants-map':RestaurantsMap,
     'restaurant-name': RestaurantName,
+    
   }
 }
 </script>
