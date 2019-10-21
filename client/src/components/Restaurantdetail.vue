@@ -6,7 +6,6 @@
     <p>Cuisine :{{restaurant.cuisine}}</p>
     <p>Location :{{restaurant.location}}</p>
     <p>Postcode :{{restaurant.postcode}}</p>
-    <!-- <p>{{restaurant.ratings}}</p> -->
     <label for="review">Add review</label>
     <input type="text" name="review" v-on:keyup.enter="submit" >
     <div id="ratings">
@@ -19,7 +18,8 @@
 
     <restaurant-review  v-for="review in restaurant.reviews"  :review="review" >
     </restaurant-review>
-    <restaurant-highcharts :restaurant="restaurant"></restaurant-highcharts>
+     <button type="button" name="button" v-on:click="seeRatingsHighchart">see ratings </button>
+     <restaurant-highcharts v-if="showChart" :restaurant="restaurant"></restaurant-highcharts>
 
     <hr>
 
@@ -38,7 +38,8 @@ export default {
   name: "restaurant-detail",
   data(){
     return{
-      rating: null
+      rating: null,
+      showChart: false
     }
 
   },
@@ -68,15 +69,24 @@ export default {
       ratingsArray.ratings=this.restaurant.ratings
       RestaurantsService.UpdateRestaurant(this.restaurant._id , ratingsArray)
 
+    },
+    seeRatingsHighchart(){
+      this.showChart = true
+      // eventBus.$emit('restaurant-highchartRating', this.restaurant.ratings)
     }
 
   },
   components:{
     'restaurant-review': RestaurantReview,
-    'restaurant-highcharts': RestaurantRatingChart,
+     'restaurant-highcharts': RestaurantRatingChart,
     StarRating
 
 
+  },
+  mounted() {
+    eventBus.$on('restaurant-selected', (restaurant) => {
+      this.showChart = false;
+    })
   }
 }
 </script>

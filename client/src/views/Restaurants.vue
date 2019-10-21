@@ -9,8 +9,9 @@
 </template>
 
 <script>
-import RestaurantsList from '../components/RestaurantsList.vue'
 import RestaurantForm from '../components/RestaurantForm.vue'
+import RestaurantsList from '../components/RestaurantsList.vue'
+
 export default {
   name:"app",
   components:{
