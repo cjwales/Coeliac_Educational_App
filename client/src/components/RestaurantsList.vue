@@ -43,7 +43,6 @@ export default {
     eventBus.$on('restaurant-deleted', (id) => {
       let index = this.restaurants.findIndex(restaurant => restaurant._id === id)
       this.restaurants.splice(index, 1)
-      // this.selectedRestaurant=null
     })
   },
 
