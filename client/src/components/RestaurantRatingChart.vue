@@ -56,8 +56,6 @@ export default {
     eventBus.$on('restaurant-selected', (restaurant) => {
     this.fetchdata(restaurant)
     })
-    
-
   },
   methods:{
     fetchdata(restaurant){
