@@ -1,7 +1,7 @@
 <template lang="html">
 <div class="">
   <ul>
-    <li v-for="restaurant in restaurants" :restaurants="restaurants">{{restaurant.name}}</li>
+    <li v-for="restaurant in restaurants"  :restaurants="restaurants" @click="handleDelete(restaurant._id)">{{restaurant.name}} ❌</li>
   </ul>
 </div>
 </template>
@@ -26,6 +26,11 @@ export default {
     fetchData() {
       RestaurantsService.getRestaurants()
       .then(restaurants => this.restaurants = restaurants);
+    },
+    handleDelete(id) {
+      RestaurantsService.deleteRestaurant(id)
+      const index = this.restaurants.findIndex(restaurant => restaurant._id === id);
+      this.restaurants.splice(index, 1);
     }
   }
 }
