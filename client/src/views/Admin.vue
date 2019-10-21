@@ -1,10 +1,11 @@
 <template lang="html">
 <div class="">
   <h1>Admin Control Panel</h1>
-  <h5>Select a Restaurant to delete:</h5>
+  <h4>Select a restaurant to delete:</h4>
   <ul>
     <li v-for="restaurant in restaurants"  :restaurants="restaurants" >{{restaurant.name}} <span @click="handleDelete(restaurant._id)">❌</span> </li>
   </ul>
+  <h5>Total Restaurants: {{restaurants.length}}</h5>
 </div>
 </template>
 
