@@ -1,7 +1,7 @@
 <template lang="html">
 <div class="">
   <ul>
-    <li v-for="restaurant in restaurants"  :restaurants="restaurants" @click="handleDelete(restaurant._id)">{{restaurant.name}} ❌</li>
+    <li v-for="restaurant in restaurants"  :restaurants="restaurants" >{{restaurant.name}} <span @click="handleDelete(restaurant._id)">❌</span> </li>
   </ul>
 </div>
 </template>
