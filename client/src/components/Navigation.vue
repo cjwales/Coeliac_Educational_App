@@ -5,7 +5,6 @@
       <router-link :to="{ name: 'kids'}">Kids</router-link>
       <router-link :to="{ name: 'parents'}">Parents</router-link>
       <router-link :to="{ name: 'restaurants'}">Restaurants</router-link>
-      <router-link :to="{ name: 'ratings'}">Ratings</router-link>
     </nav>
     <router-view id="view"></router-view>
   </div>
