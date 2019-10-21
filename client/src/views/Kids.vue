@@ -1,12 +1,46 @@
 <template lang="html">
   <div class="">
-    <h1>kids</h1>
+    <h1>Questions and Answers</h1>
+    <div class="cards">
+      <div v-for="(card, index) in qa" class="card"
+        :style="{ backgroundColor: card.color }">
+        <button @click="showAnswer(index)">Q.{{ index+1 }} {{ card.question }}</button>
+        <div class="" v-if="visibleAnswer === index">
+          {{ card.answer }}
+        </div>
+      </div>
+    </div>
   </div>
 
 </template>
 
 <script>
 export default {
+  data: () => ({
+    qa: [
+      {question: 'What is Coeliacs?' , answer: 'Coeliacs (pronounced ‘see-liac’) disease is a illness where your body starts to fight against its self. There is a protein called gluten which is found in food that causes harm to the inside of your tummy. ', color: '#4FBFE8'},
+
+      {question: 'How many people have Coeliacs?' , answer: 'Its about 1 in every 100 children have Coeliacs but not everyone knows they have, they might not find out till they are older. ', color: '#EFC7A4'},
+
+      {question: 'Where can gluten be found?' , answer: 'Gluten is found in foods that contain wheat, barley and rye.', color: '#FA6C50'},
+
+      {question: 'What are might your symptoms be?' , answer: 'unexplained sickness, Sore tummys, tiredness, Sometimes you might loose weight (not in every case), mouth ulcers, skin rash or itchy skin, tooth enamel problems', color: '#9ED269'},
+
+      {question: 'Will I have Coeliacs all my life?' , answer: 'Yes you will, but after you’ve made changes to your diet and been living gluten free for a while it will become lots easier to live with and you’ll get lots of help making sure your are able to stay healthy.', color: '#EB5463'},
+
+      {question: 'What must I do differently?' , answer: 'You will need to change your diet and stop eating foods that contain gluten. You will also need to make sure gluten doesn’t sneak into your food, sometimes even a small crumb can make you sick.', color: '#FDCD56'},
+
+      {question: 'Is diet all that important?' , answer: 'Diet is very important, it is the only way to make your body better, there is no magic pill you can take.', color: '#AC92EA'},
+
+      {question: 'What doctors will I see?' , answer: 'If the person who looks after you thinks some food might be making you sick, they will take you to see a GP (the person who you might see if you’ve a really sore throat or ear) If they think its gluten that might be making you feel sick, you will go to see either a gastroenterologist (tummy doctor) or you might even go see a special person who knows all about the foods we eat, what’s good for us and what’s not, they are called a dietician.', color: '#5E9CEA'},
+    ],
+    visibleAnswer: null
+  }),
+  methods: {
+    showAnswer(index) {
+      this.visibleAnswer = index
+    }
+  }
 }
 </script>
 
