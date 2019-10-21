@@ -32,6 +32,7 @@ export default {
   },
   mounted(){
     this.fetchdata();
+
     eventBus.$on('restaurant-selected', (restaurant) => {
       this.selectedRestaurant = restaurant
     })

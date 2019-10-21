@@ -4,6 +4,7 @@ import Home from '@/views/Home';
 import Kids from '@/views/Kids';
 import Parents from '@/views/Parents';
 import Restaurants from '@/views/Restaurants';
+import Admin from '@/views/Admin';
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ const router = new Router({
       path: '/restaurants',
       name: 'restaurants',
       component: Restaurants
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: Admin
     }
 
   ]
