@@ -53,10 +53,23 @@ export default {
   },
   mounted(){
 
-    eventBus.$on('restaurant-selected', (restaurant) => {
+    // eventBus.$on('restaurant-highchartRating', (ratings) => {
+    //   // console.log("hichart log ",ratings);
+    //   this.ratings = ratings;
+    //   // debugger
+    //
+    // })
+
+    eventBus.$on('restaurant-selected',
+     (restaurant) => {
     this.fetchdata(restaurant)
-    })
+  })
+
+  this.ratings = this.fetchdata(this.restaurant);
+
+
   },
+
   methods:{
     fetchdata(restaurant){
       let  ratings= restaurant.ratings

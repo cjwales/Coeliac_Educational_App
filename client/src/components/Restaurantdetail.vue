@@ -19,7 +19,8 @@
 
     <restaurant-review  v-for="review in restaurant.reviews"  :review="review" >
     </restaurant-review>
-    <restaurant-highcharts :restaurant="restaurant"></restaurant-highcharts>
+     <button type="button" name="button" v-on:click="seeRatingsHighchart">see ratings </button>
+    <restaurant-highcharts v-if="showChart" :restaurant="restaurant"></restaurant-highcharts>
 
     <hr>
 
@@ -38,7 +39,8 @@ export default {
   name: "restaurant-detail",
   data(){
     return{
-      rating: null
+      rating: null,
+      showChart: false
     }
 
   },
@@ -68,12 +70,19 @@ export default {
       ratingsArray.ratings=this.restaurant.ratings
       RestaurantsService.UpdateRestaurant(this.restaurant._id , ratingsArray)
 
+    },
+    seeRatingsHighchart(){
+      this.showChart = true
+      // eventBus.$emit('restaurant-highchartRating', this.restaurant.ratings)
     }
+    // seeRatingsHighchart(){
+    //   // console.log("detail log",this.restaurant.ratings);
+    // }
 
   },
   components:{
     'restaurant-review': RestaurantReview,
-    'restaurant-highcharts': RestaurantRatingChart,
+     'restaurant-highcharts': RestaurantRatingChart,
     StarRating
 
 
