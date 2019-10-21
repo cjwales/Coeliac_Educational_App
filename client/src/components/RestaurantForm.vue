@@ -54,28 +54,26 @@ export default {
       .then(data => this.geolocation=data.result)
       .then(res => {
         const payload = {
-         name: this.name,
-         address:this.address,
-         postcode: this.postcode,
-         cuisine:this.cuisine,
-         longitude:this.geolocation.longitude,
-         latitude:this.geolocation.latitude,
-         reviews:[]
+          name: this.name,
+          address:this.address,
+          postcode: this.postcode,
+          cuisine:this.cuisine,
+          longitude:this.geolocation.longitude,
+          latitude:this.geolocation.latitude,
+          reviews:[],
+          ratings:[]
         }
         console.log("payload",payload);
-        RestaurantsService.postRestaurant(payload).then(restaurant =>{eventBus.$emit('restaurant-added',restaurant)})
-
-        // event.target.reset();
-
-
+        RestaurantsService.postRestaurant(payload).then(restaurant =>
+          {eventBus.$emit('restaurant-added',restaurant)})
       }
 
 
-      )
-
-    }
+    )
 
   }
+
+}
 }
 </script>
 
