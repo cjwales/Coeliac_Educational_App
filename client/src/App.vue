@@ -105,8 +105,7 @@ table {
 }
 
 .background {
-  /* background-image: linear-gradient(to bottom right, #F299CE, #B3A5EF); */
-  background-image: image("../assets/background.jpg");
+  /* background-image: url("./assets/background.jpg"); */
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;

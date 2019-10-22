@@ -47,6 +47,7 @@ h1 {
 
 p {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 ul {
@@ -54,7 +55,11 @@ ul {
 
 }
 li {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
   list-style: square;
+  padding: 5px;
 }
 .intro {
   margin-left: 110px;
@@ -69,6 +74,7 @@ li {
   padding: 30px;
   margin-left: 110px;
   margin-right: 110px;
+  margin-bottom: 40px;
 }
 
 .out {

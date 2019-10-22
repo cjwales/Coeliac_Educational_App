@@ -71,6 +71,7 @@ button {
   font-family: 'Lakki Reddy', cursive;
   font-size: 24px;
   border: none;
+  line-height: 26px;
 }
 
 p {
