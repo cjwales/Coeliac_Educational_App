@@ -139,6 +139,7 @@ footer {
 }
 
 a {
+  color: black;
   display: flex;
   justify-content: center;
   text-decoration: none;

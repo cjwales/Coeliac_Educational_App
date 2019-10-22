@@ -1,9 +1,9 @@
 <template lang="html">
   <div class="">
-    <h1>restaurant</h1>
+    <h1>Restaurants</h1>
     <section>
-      <restaurant-form/>
       <restaurants-List />
+      <restaurant-form/>
     </section>
   </div>
 </template>

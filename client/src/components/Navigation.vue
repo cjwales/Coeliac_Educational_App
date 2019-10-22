@@ -5,7 +5,7 @@
       <router-link class="nav-button button-2" :to="{ name: 'kids'}">Kids Zone</router-link>
       <router-link class="nav-button button-3" :to="{ name: 'parents'}">Parents</router-link>
       <router-link class="nav-button button-4" :to="{ name: 'restaurants'}">Restaurants</router-link>
-      <router-link :to="{ name: 'admin'}">Admin</router-link>
+      <router-link class="button-5" :to="{ name: 'admin'}">Admin</router-link>
     </nav>
     <router-view id="view"></router-view>
   </div>
@@ -54,6 +54,11 @@ a {
 .button-4 {
   background-color: #AC92EA;
   box-shadow: 5px 10px #967ADA;
+  padding: 30px;
+}
+.button-5 {
+  background-color: #4FBFE8;
+  box-shadow: 5px 10px #3AADD9;
   padding: 30px;
 }
 

@@ -1,9 +1,11 @@
 <template lang="html">
   <div class="">
+    <div class="map-restaurant">
+      <restaurants-map class="map-actual" :restaurants="restaurants" :markers="markers"></restaurants-map>
+      <restaurant-detail class="detail" :restaurant="selectedRestaurant" ></restaurant-detail>
+    </div>
     <restaurant-name  v-for="(restaurant , index) in restaurants" :key= "index" :restaurant="restaurant" >
     </restaurant-name>
-    <restaurants-map  :restaurants="restaurants" :markers="markers"></restaurants-map>
-    <restaurant-detail  :restaurant="selectedRestaurant" ></restaurant-detail>
   </div>
 
 
@@ -81,4 +83,17 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.map-restaurant {
+  display: flex;
+  flex-direction: row;
+}
+.map-actual {
+  min-width: 50%;
+}
+
+.detail {
+  min-width: 50%;
+  margin-left: 50px;
+}
+
 </style>

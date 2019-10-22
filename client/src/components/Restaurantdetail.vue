@@ -1,12 +1,12 @@
 <template lang="html">
   <div class="restaurant-detail">
-        <h3>{{ restaurant.name }}</h3>
+        <h2>{{ restaurant.name }}</h2>
         <p>Restaurant range :{{restaurant.range}}</p>
         <p>Cuisine :{{restaurant.cuisine}}</p>
         <p>Location :{{restaurant.location}}</p>
         <p>Postcode :{{restaurant.postcode}}</p>
-        <label for="review">Add review</label>
-        <input type="text" name="review" v-on:keyup.enter="submit" >
+        <!-- <label for="review">Add review</label> -->
+        <textarea placeholder="Add Review" type="text" name="review" v-on:keyup.enter="submit" ></textarea>
       <div id="ratings">
         <star-rating   @rating-selected ="setRating" ></star-rating>
       </div>
@@ -16,7 +16,7 @@
     </restaurant-review>
     <button type="button" name="button" v-on:click="seeRatingsHighchart" >see ratings </button>
     <restaurant-highcharts v-if="showChart" :restaurant="restaurant"></restaurant-highcharts>
-    <hr>
+
   </div>
 
 </template>
@@ -96,11 +96,11 @@ export default {
 
 <style lang="css" scoped>
 
-body {
+/* body {
   font-family: 'Raleway', sans-serif;
-}
+} */
 
-.custom-text {
+/* .custom-text {
   font-weight: bold;
   font-size: 1.9em;
   border: 1px solid #cfcfcf;
@@ -109,7 +109,30 @@ body {
   border-radius: 5px;
   color: #999;
   background: #fff;
+} */
+
+.restaurant-detail {
+font-family: 'Oswald', sans-serif;
+font-size: 24px;}
+
+h2 {
+  font-size: 38px;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 
+textarea {
+  width: 300px;
+  height: 200px;
+}
+
+textarea::placeholder {
+  font-size: 20px;
+}
+
+p {
+  padding-left: 0;
+  margin-bottom: 10px;
+}
 
 </style>
