@@ -26,7 +26,7 @@
     <!-- <button type="button" class="delete-btn" v-on:click="deleteRestaurant">Delete</button> -->
     <restaurant-review  v-for="review in restaurant.reviews"  :review="review" >
     </restaurant-review>
-    <button class="ratings-button" type="button" name="button" v-on:click="seeRatingsHighchart" >see ratings </button>
+    <button class="ratings-button" type="button" name="button" v-on:click="seeRatingsHighchart" >See ratings</button>
     <restaurant-highcharts v-if="showChart" :restaurant="restaurant"></restaurant-highcharts>
 
   </div>
@@ -216,8 +216,8 @@ p {
 }
 
 .submit {
-  background-color: #CE5564;
-  box-shadow: 5px 10px #D94452;
+  background-color: #FA6C50;
+  box-shadow: 5px 10px #E8553E;
   padding: 20px;
   font-family: 'Lakki Reddy', cursive;
   font-size: 20px;

@@ -87,6 +87,9 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 ol, ul {
 	list-style: none;

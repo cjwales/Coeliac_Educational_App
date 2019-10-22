@@ -52,7 +52,7 @@ export default {
 <style lang="css" scoped>
 .map {
   height:65vh;
+  max-height: 500px;
   max-width: 500vh;
-  margin-left: 50px;
 }
 </style>

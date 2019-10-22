@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div class="cards-list">
     <h1>We want to help you understand more about whats going on.</h1>
     <p>Click on the questions below to show the anwers</p>
     <div class="cards">
@@ -17,12 +17,12 @@
   </div>
 
 </template>
-
+  <!-- background-image: url('../assets/gut.jpg'); -->
 <script>
 export default {
   data: () => ({
     qa: [
-      {question: 'What is Coeliacs?' , answer: 'Coeliacs (pronounced ‘see-liac’) disease is a illness where your body starts to fight against its self. There is a protein called gluten which is found in food that causes harm to the inside of your tummy. ', color: '#4FBFE8', shadow: '#3AADD9'},
+      {question: 'What is Coeliacs?' , answer: 'Coeliacs (pronounced ‘see-liac’) disease is a illness where your body starts to fight against its self. There is a protein called gluten which is found in food that causes harm to the inside of your tummy. ', color: '#4FBFE8', shadow: '#3AADD9', image: './assets/gut.jpg'},
 
       {question: 'How many people have Coeliacs?' , answer: 'Its about 1 in every 100 children have Coeliacs but not everyone knows they have, they might not find out till they are older. ', color: '#EFC7A4', shadow: '#E3B692'},
 
@@ -43,6 +43,7 @@ export default {
   methods: {
     showAnswer(index) {
       this.visibleAnswer = index
+      // document.body.style.backgroundImage = `url(${this.qa[index].image})`;
     }
   }
 }
@@ -67,12 +68,18 @@ export default {
   font-weight: 300;
 }
 
+/* .cards-list {
+  background-color: white;
+} */
+
 button {
   font-family: 'Lakki Reddy', cursive;
   font-size: 24px;
   border: none;
   line-height: 26px;
 }
+
+button:focus { outline: none; }
 
 p {
   margin: 40px;

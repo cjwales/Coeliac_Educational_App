@@ -1,7 +1,11 @@
 <template lang="html">
-  <div id="container">
-    <highcharts :options="chartOptions"></highcharts>
+
+  <div class="">
+    <div id="container">
+      <highcharts :options="chartOptions"></highcharts>
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -101,9 +105,11 @@ export default {
 #container, #sliders {
   min-width: 310px;
   max-width: 800px;
-  margin: 0 auto;
+  margin-top: 30px;
+  margin-right: 120px
 }
 #container {
   height: 400px;
 }
+
 </style>

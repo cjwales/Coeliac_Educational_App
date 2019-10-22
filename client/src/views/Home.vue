@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img src="../assets/gluten-free.jpg" alt="gluten free bread">
+    <iframe width="1280" height="720" src="https://www.youtube.com/embed/l2KKyUo8Ujs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <p class="info">Your health is important and we want you to lead your best life.
     <br>
     <br>
@@ -18,6 +18,7 @@ export default {
 }
 </script>
 <style scoped>
+
 .home {
   display: flex;
   justify-content: center;
