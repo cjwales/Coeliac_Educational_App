@@ -11,9 +11,6 @@
           Add Review: <input type="text" name="review" id ="review" >
           <input type="submit">
           </form>
-
-
-
       <div id="ratings">
         <star-rating   @rating-selected ="setRating" ></star-rating>
       </div>
@@ -55,7 +52,7 @@ export default {
       .then(() => eventBus.$emit('restaurant-deleted', this.restaurant._id))
     },
     submit(){
-
+      event.preventDefault();
       this.restaurant.reviews.push(event.target.review.value);
       let reviewsLocal = {
         "reviews":[]

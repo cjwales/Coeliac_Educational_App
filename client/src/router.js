@@ -5,6 +5,7 @@ import Kids from '@/views/Kids';
 import Parents from '@/views/Parents';
 import Restaurants from '@/views/Restaurants';
 import Admin from '@/views/Admin';
+import Login from '@/views/Login';
 
 Vue.use(Router)
 
@@ -34,8 +35,12 @@ const router = new Router({
       path: '/admin',
       name: 'admin',
       component: Admin
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
     }
-
   ]
 })
 

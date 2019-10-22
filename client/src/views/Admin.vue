@@ -1,5 +1,6 @@
 <template lang="html">
 <div class="">
+  
   <h1>Admin Control Panel</h1>
   <h4>Select a restaurant to delete:</h4>
   <ul>
