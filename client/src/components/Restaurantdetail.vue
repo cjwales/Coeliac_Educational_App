@@ -1,28 +1,22 @@
 <template lang="html">
-
   <div class="restaurant-detail">
-    <h3>{{ restaurant.name }}</h3>
-    <p>Restaurant range :{{restaurant.range}}</p>
-    <p>Cuisine :{{restaurant.cuisine}}</p>
-    <p>Location :{{restaurant.location}}</p>
-    <p>Postcode :{{restaurant.postcode}}</p>
-    <!-- <p>{{restaurant.ratings}}</p> -->
-    <label for="review">Add review</label>
-    <input type="text" name="review" v-on:keyup.enter="submit" >
-    <div id="ratings">
-      <star-rating @rating-selected ="setRating"></star-rating>
-      <h3>Selected Rating:{{rating}} </h3>
-    </div>
-    <br>
-
+        <h3>{{ restaurant.name }}</h3>
+        <p>Restaurant range :{{restaurant.range}}</p>
+        <p>Cuisine :{{restaurant.cuisine}}</p>
+        <p>Location :{{restaurant.location}}</p>
+        <p>Postcode :{{restaurant.postcode}}</p>
+        <label for="review">Add review</label>
+        <input type="text" name="review" v-on:keyup.enter="submit" >
+      <div id="ratings">
+        <star-rating   @rating-selected ="setRating" ></star-rating>
+      </div>
+      <br>
     <button type="button" class="delete-btn" v-on:click="deleteRestaurant">Delete</button>
-
     <restaurant-review  v-for="review in restaurant.reviews"  :review="review" >
     </restaurant-review>
-    <restaurant-highcharts :restaurant="restaurant"></restaurant-highcharts>
-
+    <button type="button" name="button" v-on:click="seeRatingsHighchart" >see ratings </button>
+    <restaurant-highcharts v-if="showChart" :restaurant="restaurant"></restaurant-highcharts>
     <hr>
-
   </div>
 
 </template>
@@ -38,7 +32,9 @@ export default {
   name: "restaurant-detail",
   data(){
     return{
-      rating: null
+      rating: [],
+      showChart: false,
+      resetableRating: 0
     }
 
   },
@@ -60,23 +56,40 @@ export default {
     },
     setRating(rating)
     {
-      this.rating= rating;
-      this.restaurant.ratings.push(rating)
+
+      let rat = rating
+      this.rating.push(rat);
+      let lastRating = this.rating.pop()
+      console.log("lod",lastRating);
+      console.log("main",this.rating);
+      this.restaurant.ratings.push(lastRating)
       let ratingsArray ={
         "ratings":[]
       }
       ratingsArray.ratings=this.restaurant.ratings
       RestaurantsService.UpdateRestaurant(this.restaurant._id , ratingsArray)
+       eventBus.$emit('restaurant-highchartRating', this.restaurant.ratings)
+    },
 
+    seeRatingsHighchart(){
+      this.showChart = true
+     // eventBus.$emit('restaurant-highchartRating', this.restaurant.ratings)
     }
 
   },
+
+
   components:{
     'restaurant-review': RestaurantReview,
     'restaurant-highcharts': RestaurantRatingChart,
     StarRating
 
 
+  },
+  mounted() {
+    eventBus.$on('restaurant-selected', (restaurant) => {
+      this.showChart = false;
+    })
   }
 }
 </script>

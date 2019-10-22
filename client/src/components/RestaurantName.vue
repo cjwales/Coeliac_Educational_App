@@ -16,11 +16,12 @@ export default {
 
 methods:{
   handleNameClick(){
-    eventBus.$emit('restaurant-selected', this.restaurant)
+   eventBus.$emit('restaurant-selected', this.restaurant)
   }
 },
 }
 </script>
 
 <style lang="css" scoped>
+
 </style>

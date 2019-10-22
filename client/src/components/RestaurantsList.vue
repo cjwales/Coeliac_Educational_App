@@ -1,12 +1,9 @@
 <template lang="html">
   <div class="">
-
     <restaurant-name  v-for="(restaurant , index) in restaurants" :key= "index" :restaurant="restaurant" >
     </restaurant-name>
     <restaurants-map  :restaurants="restaurants" :markers="markers"></restaurants-map>
     <restaurant-detail  :restaurant="selectedRestaurant" ></restaurant-detail>
-
-
   </div>
 
 
@@ -72,6 +69,7 @@ export default {
       marker.tooltip = restaurant.name
       return marker
     }
+
   },
   components: {
     'restaurant-detail': Restaurantdetail,
