@@ -55,13 +55,14 @@ export default {
 
     eventBus.$on('restaurant-highchartRating', (ratings) => {
       console.log("hichart log ",ratings);
+      this.newrating(ratings)
 
     })
-  //
-  //   eventBus.$on('restaurant-selected',
-  //    (restaurant) => {
-  //   this.fetchdata(restaurant)
-  // })
+
+    eventBus.$on('restaurant-selected',
+     (restaurant) => {
+    this.fetchdata(restaurant)
+  })
 
   this.ratings = this.fetchdata(this.restaurant);
 
@@ -71,6 +72,10 @@ export default {
   methods:{
     fetchdata(restaurant){
       let  ratings= restaurant.ratings
+      this.newrating(ratings);
+
+    },
+    newrating(ratings){
       var counts = {
         1 : 0,
         2 : 0,
@@ -84,6 +89,7 @@ export default {
       }
       ratings = [counts[1], counts[2], counts[3], counts[4],counts[5]]
       this.chartOptions.series[0].data=ratings;
+
     }
   }
 

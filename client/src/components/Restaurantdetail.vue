@@ -5,13 +5,20 @@
         <p>Cuisine :{{restaurant.cuisine}}</p>
         <p>Location :{{restaurant.location}}</p>
         <p>Postcode :{{restaurant.postcode}}</p>
-        <label for="review">Add review</label>
-        <input type="text" name="review" v-on:keyup.enter="submit" >
+        <p>PhoneNumber: {{restaurant.phone}}</p>
+        <!-- <input type="submit" name="review" v-model= "review" v-on:click="submit" > -->
+        <form v-on:submit="submit" id="review-form">
+          Add Review: <input type="text" name="review" id ="review" >
+          <input type="submit">
+          </form>
+
+
+
       <div id="ratings">
         <star-rating   @rating-selected ="setRating" ></star-rating>
       </div>
       <br>
-    <button type="button" class="delete-btn" v-on:click="deleteRestaurant">Delete</button>
+    <!-- <button type="button" class="delete-btn" v-on:click="deleteRestaurant">Delete</button> -->
     <restaurant-review  v-for="review in restaurant.reviews"  :review="review" >
     </restaurant-review>
     <button type="button" name="button" v-on:click="seeRatingsHighchart" >see ratings </button>
@@ -34,7 +41,8 @@ export default {
     return{
       rating: [],
       showChart: false,
-      resetableRating: 0
+      resetableRating: 0,
+      review:""
     }
 
   },
@@ -47,7 +55,8 @@ export default {
       .then(() => eventBus.$emit('restaurant-deleted', this.restaurant._id))
     },
     submit(){
-      this.restaurant.reviews.push(event.target.value);
+
+      this.restaurant.reviews.push(event.target.review.value);
       let reviewsLocal = {
         "reviews":[]
       }

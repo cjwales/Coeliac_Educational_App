@@ -4,10 +4,23 @@
     <form id="restaurant-form" v-on:submit="handleSubmit" method="post" >
       <label for="name">Restaurant name:</label>
       <input type="text" id="name" v-model="name" required/>
-      <label for="address">Address:</label>
-      <input type="text" id="address" v-model="address" required/>
+      <label for="location">Address:</label>
+      <input type="text" id="location" v-model="location" required/>
       <label for="postcode">Postcode:</label>
       <input type="text" id="postcode" v-model="postcode" required/>
+      <label for="range">Price Range</label>
+      <select  name="range" v-model="range" >
+        <option value="£">£</option>
+        <option value="£">££</option>
+        <option value="£££">£££</option>
+      </select>
+
+
+
+      <label for="phone">PhoneNumber:</label>
+      <input type="tel" id="phone" name="phone"
+             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+             required>
 
       <label for="cuisine">Cuisine:</label>
       <select  name="cuisine" v-model="cuisine" >
@@ -36,11 +49,13 @@ export default {
   data(){
     return {
       name:'',
-      address:'',
+      location:'',
       postcode:'',
       cuisine:'',
       longitude:'',
       latitude:'',
+      range:'',
+      phone:'',
       geolocation:{}
     }
   },
@@ -55,11 +70,13 @@ export default {
       .then(res => {
         const payload = {
           name: this.name,
-          address:this.address,
+          location:this.location,
           postcode: this.postcode,
           cuisine:this.cuisine,
           longitude:this.geolocation.longitude,
           latitude:this.geolocation.latitude,
+          phone:this.phone,
+          range:this.range,
           reviews:[],
           ratings:[]
         }
