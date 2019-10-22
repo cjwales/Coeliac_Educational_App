@@ -57,6 +57,11 @@ a {
   box-shadow: 5px 10px #967ADA;
   padding: 30px;
 }
+.button-5 {
+  background-color: #4FBFE8;
+  box-shadow: 5px 10px #3AADD9;
+  padding: 30px;
+}
 
 /* .nav-button {
   background-color: pink;

@@ -1,9 +1,13 @@
 <template lang="html">
   <div class="">
-    <restaurant-name  v-for="(restaurant , index) in restaurants" :key= "index" :restaurant="restaurant" >
-    </restaurant-name>
-    <restaurants-map  :restaurants="restaurants" :markers="markers"></restaurants-map>
-    <restaurant-detail  :restaurant="selectedRestaurant" ></restaurant-detail>
+    <div class="map-restaurant">
+      <restaurants-map class="map-actual" :restaurants="restaurants" :markers="markers"></restaurants-map>
+      <restaurant-detail class="detail" :restaurant="selectedRestaurant" ></restaurant-detail>
+    </div>
+    <div class="restaurant-lists">
+      <restaurant-name class="restaurant-item" v-for="(restaurant , index) in restaurants" :key= "index" :restaurant="restaurant" >
+      </restaurant-name>
+    </div>
   </div>
 
 
@@ -81,4 +85,30 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.map-restaurant {
+  display: flex;
+  flex-direction: row;
+}
+.map-actual {
+  min-width: 50%;
+}
+
+.detail {
+  min-width: 50%;
+  margin-left: 50px;
+}
+
+.restaurant-item {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  list-style: square;
+  padding: 5px;
+  flex-direction: column;
+}
+
+
+.restaurant-lists {
+
+}
 </style>

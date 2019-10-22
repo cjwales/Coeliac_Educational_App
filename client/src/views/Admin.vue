@@ -1,6 +1,5 @@
 <template lang="html">
-<div class="">
-  
+<div class="admin-list">
   <h1>Admin Control Panel</h1>
   <h4>Select a restaurant to delete:</h4>
   <ul>
@@ -41,4 +40,25 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.admin-list {
+  font-family: 'Oswald', sans-serif;
+  margin-left: 150px;
+}
+
+h1 {
+  padding-left: 0;
+}
+
+h5 {
+  padding-top: 20px;
+}
+
+h4 {
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+li {
+  font-weight: 300;
+}
 </style>
