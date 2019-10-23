@@ -1,12 +1,23 @@
 <template lang="html">
-<div class="admin-list">
-  <h1>Admin Control Panel</h1>
-  <h4>Select a restaurant to delete:</h4>
-  <ul>
-    <li v-for="restaurant in restaurants"  :restaurants="restaurants" >{{restaurant.name}} <span @click="handleDelete(restaurant._id)">❌</span> </li>
-  </ul>
-  <h5>Total Restaurants: {{restaurants.length}}</h5>
-</div>
+  <div class="admin-list">
+    <h1>Admin Control Panel</h1>
+    <h4>Select a restaurant to delete:</h4>
+    <ul>
+      <li v-for="restaurant in restaurants"  :restaurants="restaurants" >{{restaurant.name}} <span @click="handleDelete(restaurant._id)">❌</span> </li>
+    </ul>
+    <h5>Total Restaurants: {{restaurants.length}}</h5>
+    <h4 class="review-title">Select a restaurant to view reviews:</h4>
+
+    <form class="" v-on:submit.prevent>
+      <select v-model="selectedRestaurant">
+        <option disabled>Select a restaurant...</option>
+        <option v-for="restaurant in restaurants" :value="restaurant">{{restaurant.name}}</option>
+      </select>
+    </form>
+    <ul>
+      <li v-for="review in selectedRestaurant.reviews" :value="selectedRestaurant.reviews">{{review}} <span @click="handleReviewDelete(selectedRestaurant._id)">❌</span> </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -18,7 +29,8 @@ export default {
   name: 'admin',
   data(){
     return {
-      restaurants: []
+      restaurants: [],
+      selectedRestaurant: []
     }
   },
   mounted() {
@@ -34,6 +46,23 @@ export default {
       RestaurantsService.deleteRestaurant(id)
       const index = this.restaurants.findIndex(restaurant => restaurant._id === id);
       this.restaurants.splice(index, 1);
+    },
+    // handleReviewDelete(id) {
+    //   RestaurantsService.UpdateRestaurant(id)
+    //   const index = this.restaurants.findIndex(restaurant => restaurant._id === id);
+    //   this.restaurants.splice(index, 1);
+    // }
+    // remove the thing from the array
+    handleReviewDelete(id) {
+      const index = this.restaurants.findIndex(restaurant => restaurant._id === id);
+
+      this.selectedRestaurant.reviews.splice(index, 1);
+      // create a variable of restaurant
+      // with all of the attributes you want of the new review after removing the review from the array
+      //
+      let newRestaurant = this.selectedRestaurant
+
+      RestaurantsService.UpdateRestaurant(newRestaurant._id, newRestaurant)
     }
   }
 }
@@ -60,5 +89,10 @@ h4 {
 
 li {
   font-weight: 300;
+}
+
+.review-title {
+  font-size: 20px;
+  margin-top: 20px;
 }
 </style>
