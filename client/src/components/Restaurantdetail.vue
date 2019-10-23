@@ -133,6 +133,8 @@ h2 {
 }
 
 textarea {
+  font-size: 20px;
+  font-weight: 300;
   margin-top: 10px;
   width: 300px;
   height: 200px;
