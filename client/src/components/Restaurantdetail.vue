@@ -14,6 +14,9 @@
       <input class="submit" type="submit">
     </form>
 
+    <restaurant-review  v-for="review in restaurant.reviews"  :review="review" >
+    </restaurant-review>
+
 
     <div id="ratings">
       <star-rating   @rating-selected ="setRating" ></star-rating>
@@ -21,9 +24,8 @@
     <br>
 
     <!-- <button type="button" class="delete-btn" v-on:click="deleteRestaurant">Delete</button> -->
-    <restaurant-review  v-for="review in restaurant.reviews"  :review="review" >
-    </restaurant-review>
-    
+
+
     <button class="ratings-button" type="button" name="button" v-on:click="seeRatingsHighchart" >see ratings </button>
     <restaurant-highcharts v-if="showChart" :restaurant="restaurant"></restaurant-highcharts>
 

@@ -1,7 +1,7 @@
 <template lang="html">
 
-    <section id="login" v-bind:class="isShake">
-        <div class="login-admin">
+  <section id="login" v-bind:class="isShake">
+    <div class="login-admin">
       <form v-if="formlogin">
         <h2>Login</h2>
         <div class="info" v-bind:class="good">
@@ -12,12 +12,11 @@
         <input type="password" v-model="login.loginPassword" placeholder="Password" />
         <button v-on:click="onSubmit">Log in</button>
       </form>
-        </div>
       <div class="button-2">
         <router-link :to="{ name: 'admin'}" v-if="loginAdmin" >Click to enter>>>>>></router-link>
       </div>
-
-    </section>
+    </div>
+  </section>
 
 
 
@@ -93,6 +92,10 @@ html, body{
   margin:0px;
   font-family: 'Work Sans', sans-serif;
 }
+.login-admin{
+    box-shadow: 5px 10px #35BB9B;
+}
+
 
 body{
   background-image:url('https://images-assets.nasa.gov/image/6900952/6900952~orig.jpg');
@@ -105,13 +108,14 @@ body{
 }
 
 section{
-  background-color: rgb(160, 209, 209);
+  background-color:#46CEAD;
   width:25%;
   min-height:25%;
   display:flex;
   flex-direction:column;
   margin-left:auto;
   margin-right:auto;
+  margin-top: 100px;
 }
 form{
   display:flex;
@@ -119,12 +123,12 @@ form{
   padding: 15px;
 }
 h2{
-  font-family: 'Archivo Black', sans-serif;
-  color:#e0dada;
+  font-family: 'Oswald', sans-serif;
+  color:black;
+  font-size: 32px;
   margin-left:auto;
   margin-right:auto;
 }
-
 .info{
   width:100%;
   padding: 1em 5px;
@@ -155,19 +159,21 @@ input{
   height:35px;
   padding: 5px 5px;
   margin: 10px 0px;
-  background-color:#e0dada;
+  background-color:white;
+  font-size: 18px;
   border:none;
 }
 button{
   height:40px;
   padding: 5px 5px;
   margin: 10px 0px;
-  font-weight:bold;
+  font-weight:300;
   background-color:#be5256;
   border:none;
-  color:#e0dada;
+  color:black;
   cursor:pointer;
-  font-size:16px;
+  font-size:24px;
+
 }
 button:hover{
   background-color:#711f1b;
@@ -205,5 +211,6 @@ button:hover{
   padding: 10px;
 
 }
+
 
 </style>
