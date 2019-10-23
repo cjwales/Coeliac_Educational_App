@@ -15,7 +15,7 @@
       </select>
     </form>
     <ul>
-      <li v-for="review in selectedRestaurant.reviews" :value="selectedRestaurant.reviews">{{review}} <span @click="handleReviewDelete(selectedRestaurant._id)">❌</span> </li>
+      <li v-for="(review, index) in selectedRestaurant.reviews" :value="review">{{review}} <span @click="handleReviewDelete(review)">❌</span> </li>
     </ul>
   </div>
 </template>
@@ -47,21 +47,15 @@ export default {
       const index = this.restaurants.findIndex(restaurant => restaurant._id === id);
       this.restaurants.splice(index, 1);
     },
-    // handleReviewDelete(id) {
-    //   RestaurantsService.UpdateRestaurant(id)
-    //   const index = this.restaurants.findIndex(restaurant => restaurant._id === id);
-    //   this.restaurants.splice(index, 1);
-    // }
-    // remove the thing from the array
-    handleReviewDelete(id) {
-      const index = this.restaurants.findIndex(restaurant => restaurant._id === id);
-
-      this.selectedRestaurant.reviews.splice(index, 1);
-      // create a variable of restaurant
-      // with all of the attributes you want of the new review after removing the review from the array
-      //
+    handleReviewDelete(review) {
+      let reviews = this.selectedRestaurant.reviews
+      for (let i = 0;i < reviews.length;i++)
+      {
+        if(reviews[i]==review){
+          this.selectedRestaurant.reviews.splice(i, 1);
+        }
+      }
       let newRestaurant = this.selectedRestaurant
-
       RestaurantsService.UpdateRestaurant(newRestaurant._id, newRestaurant)
     }
   }
@@ -69,30 +63,30 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.admin-list {
-  font-family: 'Oswald', sans-serif;
-  margin-left: 150px;
-}
+  .admin-list {
+    font-family: 'Oswald', sans-serif;
+    margin-left: 150px;
+  }
 
-h1 {
-  padding-left: 0;
-}
+  h1 {
+    padding-left: 0;
+  }
 
-h5 {
-  padding-top: 20px;
-}
+  h5 {
+    padding-top: 20px;
+  }
 
-h4 {
-  font-size: 20px;
-  padding-bottom: 20px;
-}
+  h4 {
+    font-size: 20px;
+    padding-bottom: 20px;
+  }
 
-li {
-  font-weight: 300;
-}
+  li {
+    font-weight: 300;
+  }
 
-.review-title {
-  font-size: 20px;
-  margin-top: 20px;
-}
+  .review-title {
+    font-size: 20px;
+    margin-top: 20px;
+  }
 </style>
