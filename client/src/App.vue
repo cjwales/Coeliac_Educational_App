@@ -1,7 +1,7 @@
 <template>
   <div class="background">
 
-    <h1>COELIAC AWARENESS</h1>
+    <h1 class="title">COELIAC AWARENESS</h1>
     <p class="tagline">EMPOWERING YOU TO MAKE AN EDUCATED CHOICE !</p>
 
     <div class="app">
@@ -122,7 +122,9 @@ h1, h2, h3, p, a {
 h1 {
   font-size: 50px;
   font-weight: 700;
-  padding: 40px;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  padding-left: 40px;
 }
 
 p {
@@ -181,7 +183,6 @@ li {
 .freebies p {
   text-decoration: underline;
   padding: 0px;
-
 }
 
 </style>

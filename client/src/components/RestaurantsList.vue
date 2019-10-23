@@ -110,9 +110,9 @@ export default {
   font-family: 'Oswald', sans-serif;
   font-weight: 300;
   font-size: 24px;
-  list-style: square;
+  list-style: none;
   margin-left: 100px;
-  min-width: 300px;
+  min-width: 170px;
   max-width: 300px;
 
 }
