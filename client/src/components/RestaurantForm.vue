@@ -15,7 +15,7 @@
       <label for="postcode">Postcode:</label>
       <input type="text" id="postcode" v-model="postcode"   pattern="[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}" title="eg: G2 3BZ "required/>
       <label for="range">Price Range</label>
-      <select  name="range" v-model="range" >
+      <select class="price" name="range" v-model="range" >
         <option value="£">£</option>
         <option value="£">££</option>
         <option value="£££">£££</option>
