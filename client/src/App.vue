@@ -12,21 +12,21 @@
       <footer>
         <ul class="podcasts">
           <p>Podcasts</p>
-          <li><a href="https://podcasts.apple.com/us/podcast/celiac-straight-talk/id1223772536?mt=2">Celiac Striaght Talk</a></li>
-          <li><a href="https://podcasts.apple.com/gb/podcast/oh-crumbs-the-gluten-free-podcast/id1471572662">Oh Crumbs</a></li>
-          <li><a href="https://podcasts.google.com/?feed=aHR0cHM6Ly90cmF2ZWxnbHV0ZW5mcmVlLmxpYnN5bi5jb20vcnNz&hl=en-GB">Travel Gluten Free</a></li>
+          <li><a href="https://podcasts.apple.com/us/podcast/celiac-straight-talk/id1223772536?mt=2" target="_blank">Celiac Striaght Talk</a></li>
+          <li><a href="https://podcasts.apple.com/gb/podcast/oh-crumbs-the-gluten-free-podcast/id1471572662" target="_blank">Oh Crumbs</a></li>
+          <li><a href="https://podcasts.google.com/?feed=aHR0cHM6Ly90cmF2ZWxnbHV0ZW5mcmVlLmxpYnN5bi5jb20vcnNz&hl=en-GB" target="_blank">Travel Gluten Free</a></li>
         </ul>
 
         <ul class="freebies">
           <p>Freebies</p>
-          <li><a href="https://www.glutafin.co.uk/">Glutafin</a></li>
-          <li><a href="https://www.juvela.co.uk/coeliac-disease/just-diagnosed">Juvela</a></li>
+          <li><a href="https://www.glutafin.co.uk/" target="_blank">Glutafin</a></li>
+          <li><a href="https://www.juvela.co.uk/coeliac-disease/just-diagnosed" target="_blank">Juvela</a></li>
         </ul>
 
         <ul class="information">
           <p>Extra Inforamtion</p>
-          <li><a href="https://www.nhs.uk/conditions/coeliac-disease/">NHS</a></li>
-          <li><a href="https://www.coeliac.org.uk/home/">Coeliac UK</a></li>
+          <li><a href="https://www.nhs.uk/conditions/coeliac-disease/" target="_blank">NHS</a></li>
+          <li><a href="https://www.coeliac.org.uk/home/" target="_blank">Coeliac UK</a></li>
         </ul>
 
       </footer>
