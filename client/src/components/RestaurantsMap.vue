@@ -55,4 +55,9 @@ export default {
   max-height: 500px;
   max-width: 500vh;
 }
+.leaflet-marker-icon{
+      background-color:red;
+      opacity: 20;
+  }
+
 </style>

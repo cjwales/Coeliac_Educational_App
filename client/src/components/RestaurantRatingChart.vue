@@ -20,11 +20,14 @@ export default {
   props:['restaurant'],
   data(){
     return {
+
       ratings: [],
+
       chartOptions: {
         title: {
           text: 'Restaurant ratings'
         },
+        colors: ['#ff4d4d', 'orange', '#ffdb4d', '#adebad', '#47d147'],
         chart: {
           type: 'column',
           options3d: {
@@ -35,6 +38,7 @@ export default {
             depth: 40
           }
         },
+
 
         xAxis: {
           categories: ['1', '2', '3', '4', '5'],
@@ -49,7 +53,8 @@ export default {
         series: [{
           name: 'No of persons rated',
           data: this.ratings,
-          stack: 'male'
+          stack: 'male',
+          colorByPoint: true
         }]
       }
 
@@ -69,6 +74,15 @@ export default {
   })
 
   this.ratings = this.fetchdata(this.restaurant);
+  Highcharts.Color.prototype.parsers.push({
+regex: /^[a-z]+$/,
+parse: function (result) {
+  var rgb = new RGBColor(result[0]);
+    if (rgb.ok) {
+      return [rgb.r, rgb.g, rgb.b, 1]; // returns rgba to Highcharts
+    }
+}
+});
 
 
   },

@@ -12,20 +12,19 @@
       <input type="text" id="name" v-model="name" required/>
       <label for="location">Address: </label>
       <input type="text" id="location" v-model="location" required/>
-      <label for="postcode">Postcode: </label>
-      <input type="text" id="postcode" v-model="postcode" required/>
-      <label for="range">Price Range: </label>
-
-      <select class="price" name="range" v-model="range" >
+      <label for="postcode">Postcode:</label>
+      <input type="text" id="postcode" v-model="postcode"   pattern="[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}" title="eg: G2 3BZ "required/>
+      <label for="range">Price Range</label>
+      <select  name="range" v-model="range" >
         <option value="£">£</option>
         <option value="£">££</option>
         <option value="£££">£££</option>
       </select>
 
       <label for="phone">PhoneNumber:</label>
-      <input type="tel" id="phone" name="phone"
-      pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-      required>
+      <input type="text" id="phone" name="phone" v-model="phone"
+             pattern="^\s*\(?(020[7,8]{1}\)?[ ]?[1-9]{1}[0-9{2}[ ]?[0-9]{4})|(0[1-8]{1}[0-9]{3}\)?[ ]?[1-9]{1}[0-9]{2}[ ]?[0-9]{3})\s*$"
+             title=" UK format eg: 01312902600"required>
 
       <label for="cuisine">Cuisine:</label>
       <select  class="cuisine" name="cuisine" v-model="cuisine" >
@@ -68,7 +67,6 @@ export default {
     handleSubmit(e){
       e.preventDefault()
       let postcode= e.target.postcode.value;
-      console.log("postcode",postcode);
       fetch("https://api.postcodes.io/postcodes/"+postcode)
       .then(response => response.json())
       .then(data => this.geolocation=data.result)
@@ -85,13 +83,10 @@ export default {
           reviews:[],
           ratings:[]
         }
-        console.log("payload",payload);
         RestaurantsService.postRestaurant(payload).then(restaurant =>
           {eventBus.$emit('restaurant-added',restaurant)})
-        }
-
-
-      )
+      }
+    )
 
     }
 
