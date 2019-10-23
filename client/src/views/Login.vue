@@ -1,20 +1,25 @@
 <template lang="html">
-  <section id="login" v-bind:class="isShake">
-    <form>
-      <h2>Login</h2>
-      <div class="info" v-bind:class="good">
-        <p>{{ alert.message }}</p>
-        <p v-show="login.loginName && login.loginPassword">{{login.loginName}} / {{login.loginPassword}}</p>
-      </div>
-      <input type="text" v-model="login.loginName" placeholder="Username" />
-      <input type="password" v-model="login.loginPassword" placeholder="Password" />
-      <button v-on:click="onSubmit">Log in</button>
-    </form>
-    <div class="admin">
-      <router-link :to="{ name: 'admin'}" v-if="loginAdmin">Admin</router-link>
-    </div>
 
+  <section id="login" v-bind:class="isShake">
+    <div class="login-admin">
+      <form v-if="formlogin">
+        <h2>Login</h2>
+        <div class="info" v-bind:class="good">
+          <p>{{ alert.message }}</p>
+          <p v-show="login.loginName && login.loginPassword">{{login.loginName}}</p>
+        </div>
+        <input type="text" v-model="login.loginName" placeholder="Username" />
+        <input type="password" v-model="login.loginPassword" placeholder="Password" />
+        <button v-on:click="onSubmit">Log in</button>
+      </form>
+      <div class="button-2">
+        <router-link :to="{ name: 'admin'}" v-if="loginAdmin" >Click to enter>>>>>></router-link>
+      </div>
+    </div>
   </section>
+
+
+
 
 
 
@@ -23,12 +28,13 @@
 <script>
 
 export default {
-  name: "login",
+  name: "Adminlogin",
   data(){
     return {
+      formlogin:true,
       loginAdmin:false,
       alert: {
-        message: "hello world"
+        message: ""
       },
       login: {
         loginName: "",
@@ -63,12 +69,13 @@ export default {
           this.fake.password == this.login.loginPassword
         )
         {
-          this.alert.message = "Hello Huston !";
+          this.alert.message = "Hello "+this.fake.login;
           this.loginAdmin=true;
+          this.formlogin=false;
 
         } else {
           this.shake = true;
-          this.alert.message = "Huston, we got a problem !";
+          this.alert.message = "Incorrect username and password";
         }
       },1000)
       console.log(this.shake)
@@ -85,25 +92,30 @@ html, body{
   margin:0px;
   font-family: 'Work Sans', sans-serif;
 }
+.login-admin{
+    box-shadow: 5px 10px #35BB9B;
+}
+
 
 body{
   background-image:url('https://images-assets.nasa.gov/image/6900952/6900952~orig.jpg');
   background-size: cover;
   display: flex;
-  flex-direction:column;
+  flex-direction:center;
   justify-content:center;
   align-items:center;
   color: #fff;
 }
 
 section{
-  background-color: rgba(0,255,0,0.3);
+  background-color:#46CEAD;
   width:25%;
   min-height:25%;
   display:flex;
   flex-direction:column;
-  /*margin-left:auto;
-  margin-right:auto;*/
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: 100px;
 }
 form{
   display:flex;
@@ -111,12 +123,12 @@ form{
   padding: 15px;
 }
 h2{
-  font-family: 'Archivo Black', sans-serif;
-  color:#e0dada;
+  font-family: 'Oswald', sans-serif;
+  color:black;
+  font-size: 32px;
   margin-left:auto;
   margin-right:auto;
 }
-
 .info{
   width:100%;
   padding: 1em 5px;
@@ -147,19 +159,21 @@ input{
   height:35px;
   padding: 5px 5px;
   margin: 10px 0px;
-  background-color:#e0dada;
+  background-color:white;
+  font-size: 18px;
   border:none;
 }
 button{
   height:40px;
   padding: 5px 5px;
   margin: 10px 0px;
-  font-weight:bold;
+  font-weight:300;
   background-color:#be5256;
   border:none;
-  color:#e0dada;
+  color:black;
   cursor:pointer;
-  font-size:16px;
+  font-size:24px;
+
 }
 button:hover{
   background-color:#711f1b;
@@ -182,8 +196,8 @@ button:hover{
 
 .shake{
   animation-name: shake;
-  animation-duration:1s;
-  /*animation-fill-mode: both;*/
+  animation-duration:3s;
+  animation-fill-mode: both;
 }
 
 @media screen and (max-width: 780px) {
@@ -191,4 +205,12 @@ button:hover{
     width:90%;
   }
 }
+.button-2 {
+  background-color: #46CEAD;
+  /* box-shadow: 5px 10px #35BB9B; */
+  padding: 10px;
+
+}
+
+
 </style>

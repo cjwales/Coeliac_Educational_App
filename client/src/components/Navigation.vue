@@ -5,7 +5,7 @@
       <router-link class="nav-button button-2" :to="{ name: 'kids'}">Kids Zone</router-link>
       <router-link class="nav-button button-3" :to="{ name: 'parents'}">Parents</router-link>
       <router-link class="nav-button button-4" :to="{ name: 'restaurants'}">Restaurants</router-link>
-      <router-link class="nav-button button-5" :to="{ name: 'login'}">Login</router-link>
+      <router-link class="nav-button button-5" :to="{ name: 'login'}">AdminLogin</router-link>
       <!-- <router-link :to="{ name: 'admin'}">Admin</router-link> -->
     </nav>
     <router-view id="view"></router-view>
