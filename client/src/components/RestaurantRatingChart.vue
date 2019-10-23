@@ -1,7 +1,11 @@
 <template lang="html">
-  <div id="container">
-    <highcharts :options="chartOptions"></highcharts>
+
+  <div class="">
+    <div id="container">
+      <highcharts :options="chartOptions"></highcharts>
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -16,11 +20,14 @@ export default {
   props:['restaurant'],
   data(){
     return {
+
       ratings: [],
+
       chartOptions: {
         title: {
           text: 'Restaurant ratings'
         },
+        colors: ['#ff4d4d', 'orange', '#ffdb4d', '#adebad', '#47d147'],
         chart: {
           type: 'column',
           options3d: {
@@ -31,6 +38,7 @@ export default {
             depth: 40
           }
         },
+
 
         xAxis: {
           categories: ['1', '2', '3', '4', '5'],
@@ -45,7 +53,8 @@ export default {
         series: [{
           name: 'No of persons rated',
           data: this.ratings,
-          stack: 'male'
+          stack: 'male',
+          colorByPoint: true
         }]
       }
 
@@ -53,13 +62,38 @@ export default {
   },
   mounted(){
 
-    eventBus.$on('restaurant-selected', (restaurant) => {
-    this.fetchdata(restaurant)
+    eventBus.$on('restaurant-highchartRating', (ratings) => {
+      console.log("hichart log ",ratings);
+      this.newrating(ratings)
+
     })
+
+    eventBus.$on('restaurant-selected',
+     (restaurant) => {
+    this.fetchdata(restaurant)
+  })
+
+  this.ratings = this.fetchdata(this.restaurant);
+  Highcharts.Color.prototype.parsers.push({
+regex: /^[a-z]+$/,
+parse: function (result) {
+  var rgb = new RGBColor(result[0]);
+    if (rgb.ok) {
+      return [rgb.r, rgb.g, rgb.b, 1]; // returns rgba to Highcharts
+    }
+}
+});
+
+
   },
+  //
   methods:{
     fetchdata(restaurant){
       let  ratings= restaurant.ratings
+      this.newrating(ratings);
+
+    },
+    newrating(ratings){
       var counts = {
         1 : 0,
         2 : 0,
@@ -73,6 +107,7 @@ export default {
       }
       ratings = [counts[1], counts[2], counts[3], counts[4],counts[5]]
       this.chartOptions.series[0].data=ratings;
+
     }
   }
 
@@ -84,9 +119,11 @@ export default {
 #container, #sliders {
   min-width: 310px;
   max-width: 800px;
-  margin: 0 auto;
+  margin-top: 30px;
+  margin-right: 120px
 }
 #container {
   height: 400px;
 }
+
 </style>

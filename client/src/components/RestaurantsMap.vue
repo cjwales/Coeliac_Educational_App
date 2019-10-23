@@ -51,7 +51,13 @@ export default {
 
 <style lang="css" scoped>
 .map {
-  height:50vh;
-  width:50vh;
+  height:65vh;
+  max-height: 500px;
+  max-width: 500vh;
 }
+.leaflet-marker-icon{
+      background-color:red;
+      opacity: 20;
+  }
+
 </style>

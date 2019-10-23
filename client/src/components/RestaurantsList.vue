@@ -1,12 +1,19 @@
 <template lang="html">
   <div class="">
+    <div class="map-restaurant">
 
-    <restaurant-name  v-for="(restaurant , index) in restaurants" :key= "index" :restaurant="restaurant" >
-    </restaurant-name>
-    <restaurants-map  :restaurants="restaurants" :markers="markers"></restaurants-map>
-    <restaurant-detail  :restaurant="selectedRestaurant" ></restaurant-detail>
+      <div class="restaurant-item">
+        <restaurant-name  v-for="(restaurant , index) in restaurants" :key= "index" :restaurant="restaurant" >
+        </restaurant-name>
+      </div>
+      <restaurants-map class="map-actual" :restaurants="restaurants" :markers="markers"></restaurants-map>
+      <restaurant-detail class="detail" :restaurant="selectedRestaurant" ></restaurant-detail>
 
-
+    </div>
+    <!-- <div class="restaurant-lists">
+      <restaurant-name class="restaurant-item" v-for="(restaurant , index) in restaurants" :key= "index" :restaurant="restaurant" >
+      </restaurant-name>
+    </div> -->
   </div>
 
 
@@ -32,6 +39,7 @@ export default {
   },
   mounted(){
     this.fetchdata();
+
     eventBus.$on('restaurant-selected', (restaurant) => {
       this.selectedRestaurant = restaurant
     })
@@ -43,7 +51,6 @@ export default {
     eventBus.$on('restaurant-deleted', (id) => {
       let index = this.restaurants.findIndex(restaurant => restaurant._id === id)
       this.restaurants.splice(index, 1)
-      // this.selectedRestaurant=null
     })
   },
 
@@ -72,6 +79,7 @@ export default {
       marker.tooltip = restaurant.name
       return marker
     }
+
   },
   components: {
     'restaurant-detail': Restaurantdetail,
@@ -83,4 +91,30 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.map-restaurant {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.map-actual {
+  min-width: 50%;
+}
+
+.detail {
+  margin-left: 30px;
+  margin-right: 70px;
+}
+
+.restaurant-item {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  list-style: none;
+  margin-left: 100px;
+  min-width: 170px;
+  max-width: 300px;
+
+}
+
 </style>

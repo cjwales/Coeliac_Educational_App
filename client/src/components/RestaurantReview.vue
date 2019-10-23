@@ -1,6 +1,6 @@
 <template lang="html">
-<div class="">
-  
+<div class="review">
+
   {{review}}
 
 </div>
@@ -14,4 +14,8 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.review {
+  padding-top: 20px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;}
 </style>
